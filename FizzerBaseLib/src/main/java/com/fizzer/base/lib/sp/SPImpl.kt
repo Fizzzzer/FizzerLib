@@ -12,7 +12,7 @@ import java.io.Serializable
  * @Email Fizzer53@sina.com
  * @Describe:SharedPreference的实现类
  */
-open class SPImpl(context: Context?) : ISharedPreferences {
+internal class SPImpl(context: Context?) : ISharedPreferences {
     private var mContext: Context? = context
 
     private var mSP: SharedPreferences? = null

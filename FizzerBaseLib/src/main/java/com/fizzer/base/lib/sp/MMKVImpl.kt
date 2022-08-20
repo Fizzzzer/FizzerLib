@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
 import java.io.Serializable
 
-class MMKVImpl : ISharedPreferences {
+internal class MMKVImpl : ISharedPreferences {
 
     private var kv = MMKV.defaultMMKV()
 
