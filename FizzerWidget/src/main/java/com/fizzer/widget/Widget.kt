@@ -9,9 +9,10 @@ import android.util.Log
  * @Describe:
  */
 class Widget {
-    companion object{
-        fun printLog(){
-            Log.e("Fizzer","Widget")
+    companion object {
+        fun printLog() {
+            Log.e("Fizzer", "Widget")
+
         }
     }
 }
