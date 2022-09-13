@@ -3,12 +3,11 @@ package com.fizzer.base.lib.ext
 import android.view.View
 
 /**
- * Author:Fizzer
- * Date:2021/4/4
- * Email:Fizzer@miaoshitech.com
- * Description:
+ * @Author:Fizzer
+ * @Date:2021/4/4
+ * @Email:Fizzer@gmail.com
+ * @Description:
  */
-
 fun <T : View> T.withTrigger(delay: Long = 800): T {
     triggerDelay = delay
     return this

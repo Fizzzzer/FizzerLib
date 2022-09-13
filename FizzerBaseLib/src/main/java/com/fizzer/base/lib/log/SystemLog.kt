@@ -1,6 +1,7 @@
-package com.fizzer.fizzer_base.log
+package com.fizzer.base.lib.log
 
 import android.util.Log
+import com.fizzer.base.lib.log.ILog
 
 /**
  * @Author fizzer
@@ -8,7 +9,7 @@ import android.util.Log
  * @Email Fizzer53@sina.com
  * @Describe:系统的日志方式
  */
-class SystemLog : ILog {
+internal class SystemLog : ILog {
     override fun loge(tag: String, msg: String) {
         Log.e(tag, msg)
     }

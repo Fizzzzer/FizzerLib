@@ -3,6 +3,7 @@ package com.fizzer.lib
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
+import com.fizzer.base.lib.log.LogUtils
 import com.fizzer.base.lib.sp.SpUtils
 import com.fizzer.lib.databinding.ActivityMainBinding
 
@@ -20,10 +21,12 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         binding.create.clickWithTrigger {
             SpUtils.INSTANCE.mSp?.file("Fizzer")?.putInt("Fizzer", 800)
+
         }
 
         binding.show.clickWithTrigger {
-            binding.value.text = (SpUtils.INSTANCE.mSp?.file("Fizzer")?.getInt("Fizzer", 90) ?: "null").toString()
+            binding.value.text =
+                (SpUtils.INSTANCE.mSp?.file("Fizzer")?.getInt("Fizzer", 90) ?: "null").toString()
         }
     }
 }

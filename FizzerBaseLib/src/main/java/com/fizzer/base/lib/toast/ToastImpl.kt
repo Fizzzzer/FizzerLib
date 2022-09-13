@@ -1,13 +1,13 @@
-package com.fizzer.fizzer_base.toast
+package com.fizzer.base.lib.toast
 
 import android.content.Context
 import android.widget.Toast
 
 /**
- * Author:Fizzer
- * Date:2021/9/17
- * Email:Fizzer@miaoshitech.com
- * Description:系统吐司的实现类
+ * @Author:Fizzer
+ * @Date:2021/9/17
+ * @Email:Fizzer@miaoshitech.com
+ * @Description:系统吐司的实现类
  */
 class ToastImpl : IShowToast {
     override fun showShortToast(context: Context?, msg: String?) {

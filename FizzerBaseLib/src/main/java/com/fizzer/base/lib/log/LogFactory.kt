@@ -1,4 +1,4 @@
-package com.fizzer.fizzer_base.log
+package com.fizzer.base.lib.log
 
 /**
  * @Author fizzer
@@ -6,15 +6,12 @@ package com.fizzer.fizzer_base.log
  * @Email Fizzer53@sina.com
  * @Describe:
  */
-class LogFactory private constructor() {
+internal class LogFactory private constructor() {
 
     /**
      * Kotlin双重锁校验模式实现单例
      */
     companion object {
-        const val LOG_SYSTEM = "SYSTEM"
-        const val LOG_CUSTOMER = "CUSTOMER"
-
         val INSTANCE: LogFactory by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { LogFactory() }
     }
 
@@ -23,10 +20,10 @@ class LogFactory private constructor() {
      */
     fun createLog(type: String): ILog {
         return when (type) {
-            LOG_SYSTEM -> {
+            LogUtils.LOG_SYSTEM -> {
                 SystemLog()
             }
-            LOG_CUSTOMER -> {
+            LogUtils.LOG_CUSTOMER -> {
                 CustomerLog()
             }
             else -> {

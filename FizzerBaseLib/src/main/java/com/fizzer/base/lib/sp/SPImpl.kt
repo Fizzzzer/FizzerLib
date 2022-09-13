@@ -1,4 +1,4 @@
-package com.fizzer.fizzer_base.sp
+package com.fizzer.base.lib.sp
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,7 +10,7 @@ import java.io.Serializable
  * @Author fizzer
  * @Data 2022/1/23 - 11:42 上午
  * @Email Fizzer53@sina.com
- * @Describe:SharedPreference的实现类
+ * @Description:SharedPreference的实现类
  */
 internal class SPImpl(context: Context?) : ISharedPreferences {
     private var mContext: Context? = context

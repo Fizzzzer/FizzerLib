@@ -1,4 +1,4 @@
-package com.fizzer.fizzer_base.sp
+package com.fizzer.base.lib.sp
 
 import java.io.Serializable
 

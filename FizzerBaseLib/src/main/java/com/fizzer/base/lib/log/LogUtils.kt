@@ -1,4 +1,4 @@
-package com.fizzer.fizzer_base.log
+package com.fizzer.base.lib.log
 
 /**
  * Author:Fizzer
@@ -8,25 +8,53 @@ package com.fizzer.fizzer_base.log
  */
 class LogUtils private constructor() {
     private var mLog: ILog? = null
-    private var mTag: String = "Fizzer"
+    private var mPreTag: String = "Fizzer"
+
 
     init {
-        mLog = LogFactory.INSTANCE.createLog(LogFactory.LOG_SYSTEM)
+        mLog = LogFactory.INSTANCE.createLog(LOG_SYSTEM)
     }
 
     companion object {
+        const val LOG_SYSTEM = "SYSTEM"
+        const val LOG_CUSTOMER = "CUSTOMER"
         val INSTANCE: LogUtils by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { LogUtils() }
     }
 
-    fun init(type: String = LogFactory.LOG_SYSTEM, tag: String = "Fizzer") {
-        mLog = LogFactory.INSTANCE.createLog(type)
-        mTag = tag
+    private fun formatTag(tag: String = ""): String {
+        return "${mPreTag}_$tag"
     }
 
     /**
-     * 获取当前的log对象
+     * 初始化Tag
      */
-    fun getLogger(): ILog? = mLog
+    fun init(type: String = LOG_SYSTEM, tag: String = "Fizzer") {
+        mLog = LogFactory.INSTANCE.createLog(type)
+        mPreTag = tag
+    }
 
+    fun loge(msg: String) {
+        loge("", msg)
+    }
+
+    fun loge(tag: String, msg: String) {
+        mLog?.loge(formatTag(tag = tag), msg)
+    }
+
+    fun logi(msg: String) {
+        logi("", msg)
+    }
+
+    fun logi(tag: String, msg: String) {
+        mLog?.logi(formatTag(tag = tag), msg)
+    }
+
+    fun logd(msg: String) {
+        logd("", msg)
+    }
+
+    fun logd(tag: String, msg: String) {
+        mLog?.logd(formatTag(tag = tag), msg)
+    }
 
 }

@@ -1,11 +1,16 @@
 package com.fizzer.base.lib.sp
 
-import com.fizzer.fizzer_base.sp.ISharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
 import java.io.Serializable
 
+/**
+ * @Author:Fizzer
+ * @Email: fizzer503@gmail.com
+ * @Date: 2022/9/13
+ * @Description: MMKV实现类
+ */
 internal class MMKVImpl : ISharedPreferences {
 
     private var kv = MMKV.defaultMMKV()

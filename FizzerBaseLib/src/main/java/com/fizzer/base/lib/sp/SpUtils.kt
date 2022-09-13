@@ -1,15 +1,13 @@
 package com.fizzer.base.lib.sp
 
 import android.content.Context
-import com.fizzer.fizzer_base.sp.ISharedPreferences
-import com.fizzer.fizzer_base.sp.SPImpl
 import com.tencent.mmkv.MMKV
 
 /**
  * @Author:Fizzer
  * @Email: qianqian.ma@tinno.com
  * @Date: 2022/8/18
- * @Descript: SP 工具类
+ * @Description: SP 工具类
  */
 class SpUtils private constructor() {
 

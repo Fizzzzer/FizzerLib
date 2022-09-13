@@ -1,4 +1,4 @@
-package com.fizzer.fizzer_base.log
+package com.fizzer.base.lib.log
 
 /**
  * @Author fizzer
@@ -6,7 +6,7 @@ package com.fizzer.fizzer_base.log
  * @Email Fizzer53@sina.com
  * @Describe:自定义的Log日志
  */
-class CustomerLog : ILog {
+internal class CustomerLog : ILog {
     override fun loge(tag: String, msg: String) {
     }
 

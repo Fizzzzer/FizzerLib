@@ -1,12 +1,12 @@
-package com.fizzer.fizzer_base.toast
+package com.fizzer.base.lib.toast
 
 import android.content.Context
 
 /**
- * Author:Fizzer
- * Date:2021/9/17
- * Email:Fizzer@miaoshitech.com
- * Description:吐司工具类
+ * @Author:Fizzer
+ * @Date:2021/9/17
+ * @Email:Fizzer@miaoshitech.com
+ * @Description:吐司工具类
  */
 class ToastUtils private constructor() {
 

@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import java.util.concurrent.ConcurrentHashMap
 
 /**
- * Author:Fizzer
- * Date:07/02/2022
- * Email:Fizzer@miaoshitech.com
- * Description:基类的事件总线，采用StateFlow来实现
+ * @Author:Fizzer
+ * @Date:07/02/2022
+ * @Email:Fizzer@gmail.com
+ * @Description:基类的事件总线，采用StateFlow来实现
  */
 object SharedFlowBus {
     private var events = ConcurrentHashMap<Any, MutableSharedFlow<Any>>()

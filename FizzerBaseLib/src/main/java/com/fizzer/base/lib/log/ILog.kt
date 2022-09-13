@@ -1,4 +1,4 @@
-package com.fizzer.fizzer_base.log
+package com.fizzer.base.lib.log
 
 /**
  * @Author fizzer
@@ -6,7 +6,7 @@ package com.fizzer.fizzer_base.log
  * @Email Fizzer53@sina.com
  * @Describe:日志封装的接口
  */
-interface ILog {
+internal interface ILog {
     fun loge(tag: String, msg: String)
 
     fun logi(tag: String, msg: String)
