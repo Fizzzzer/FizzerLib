@@ -41,5 +41,4 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'com.tencent:mmkv:1.2.14'
-//    implementation 'com.tencent:mmkv-shared:1.2.14'
 }
