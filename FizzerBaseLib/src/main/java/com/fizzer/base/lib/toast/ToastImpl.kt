@@ -9,7 +9,7 @@ import android.widget.Toast
  * @Email:Fizzer@miaoshitech.com
  * @Description:系统吐司的实现类
  */
-class ToastImpl : IShowToast {
+internal class ToastImpl : IShowToast {
     override fun showShortToast(context: Context?, msg: String?) {
         context?.let {
             Toast.makeText(context, msg ?: "", Toast.LENGTH_SHORT).show()

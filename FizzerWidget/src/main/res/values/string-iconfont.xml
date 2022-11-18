@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 文档主要用来记录当前收录的一些IconFont资源 -->
+
+<resources>
+    <!--返回-->
+    <string name="iconFont_back">&#xe60e;</string>
+    <!--菜单 三个点(竖直方向)-->
+    <string name="iconFont_menu">&#xe60c;</string>
+    <!--播放按钮-->
+    <string name="iconFont_play">&#xe656;</string>
+    <!-- 下一曲-->
+    <string name="iconFont_next">&#xe68e;</string>
+    <!--上一曲-->
+    <string name="iconFont_prev">&#xe68d;</string>
+    <!--暂停-->
+    <string name="iconFont_pause">&#xe666;</string>
+    <!-- 菜单 - 横向 三个点-->
+    <string name="iconFont_menu_horizontal">&#xe637;</string>
+    <!-- 菜单 - 竖向 三个点-->
+    <string name="iconFont_menu_vertical">&#xe60c;</string>
+
+</resources>
