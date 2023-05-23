@@ -9,7 +9,7 @@ import com.tencent.mmkv.MMKV
  * @Date: 2022/8/18
  * @Description: SP 工具类
  */
-class SpUtils private constructor() {
+class SpInstance private constructor() {
 
 
     /**
@@ -28,7 +28,7 @@ class SpUtils private constructor() {
         const val SP_TYPE_SP = "SP"
         const val SP_TYPE_MMKV = "MMKV"
 
-        val INSTANCE: SpUtils by lazy { SpUtils() }
+        val INSTANCE: SpInstance by lazy { SpInstance() }
     }
 
     /**

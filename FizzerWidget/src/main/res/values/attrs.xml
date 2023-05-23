@@ -11,4 +11,8 @@
         <!--        左下圆角大小-->
         <attr name="rcv_bottomLeftRadiu" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="CircleProgressBar">
+        <!--    圆环半径    -->
+        <attr name="cpb_radius" format="dimension" />
+    </declare-styleable>
 </resources>

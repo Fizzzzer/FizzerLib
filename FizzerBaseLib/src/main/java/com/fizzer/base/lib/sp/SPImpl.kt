@@ -187,6 +187,6 @@ internal class SPImpl(context: Context?) : ISharedPreferences {
      * 提交数据
      */
     private fun commitData() {
-        mEditor?.commit()
+        mEditor?.apply()
     }
 }
