@@ -14,5 +14,21 @@
     <declare-styleable name="CircleProgressBar">
         <!--    圆环半径    -->
         <attr name="cpb_radius" format="dimension" />
+        <!--    圆环宽度    -->
+        <attr name="cpb_stroke_width" format="dimension" />
+        <!--    圆环背景色  -->
+        <attr name="cpb_progress_bar_bg_color" format="color" />
+        <!--   当前进度环形的颜色   -->
+        <attr name="cpb_progress_bar_color" format="color" />
+        <!--   最大进度     -->
+        <attr name="cpb_max_progress" format="integer" />
+        <!--   当前进度    -->
+        <attr name="cpb_current_progress" format="integer" />
+        <!--   进度文案    -->
+        <attr name="cpb_text" format="string" />
+        <!--   文案颜色    -->
+        <attr name="cpb_text_color" format="color" />
+        <!--   文案大小    -->
+        <attr name="cpb_text_size" format="dimension" />
     </declare-styleable>
 </resources>
