@@ -2,6 +2,7 @@ package com.fizzer.lib
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.lib.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,5 +26,10 @@ class MainActivity : AppCompatActivity() {
 //            binding.value.text =
 //                (SpUtils.INSTANCE.mSp?.file("Fizzer")?.getInt("Fizzer", 90) ?: "null").toString()
 //        }
+
+        binding.create.clickWithTrigger {
+            var progress = binding.et.text.toString().toFloat()
+            binding.cpb.setProgress(progress)
+        }
     }
 }

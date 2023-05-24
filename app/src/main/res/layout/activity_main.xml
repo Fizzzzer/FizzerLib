@@ -29,4 +29,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/create" />
 
+    <com.fizzer.widget.view.CircleProgressBar
+        android:id="@+id/cpb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/value"
+        app:layout_constraintTop_toBottomOf="@id/value"
+        app:cpb_radius="50dp"
+        app:cpb_current_progress="33"
+        app:cpb_progress_bar_color="#F8DF70"
+        app:cpb_progress_bar_bg_color="#F9F4DC"
+        app:cpb_text="Fizzer"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cpb"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
