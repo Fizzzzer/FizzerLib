@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/line_divider"
+        android:orientation="vertical"
+        android:showDividers="middle|end">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/circleProgressBar"
+            style="@style/item_font"
+            android:text="CircleProgressBar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/roundCardView"
+            style="@style/item_font"
+            android:text="RoundCardView" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,8 +1,11 @@
 package com.fizzer.lib
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.lib.databinding.ActivityMainBinding
+import com.fizzer.lib.widget.WidgetPage
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,14 +19,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-//        binding.create.clickWithTrigger {
-//            SpUtils.INSTANCE.mSp?.file("Fizzer")?.putInt("Fizzer", 800)
-//
-//        }
-
-//        binding.show.clickWithTrigger {
-//            binding.value.text =
-//                (SpUtils.INSTANCE.mSp?.file("Fizzer")?.getInt("Fizzer", 90) ?: "null").toString()
-//        }
+        binding.widget.clickWithTrigger {
+            startActivity(Intent(this, WidgetPage::class.java))
+        }
     }
 }
