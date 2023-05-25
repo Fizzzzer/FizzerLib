@@ -15,4 +15,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/lib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lib"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/widget" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

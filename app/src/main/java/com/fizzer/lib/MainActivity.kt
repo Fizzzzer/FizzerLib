@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.lib.databinding.ActivityMainBinding
+import com.fizzer.lib.lib.LibPage
 import com.fizzer.lib.widget.WidgetPage
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         binding.widget.clickWithTrigger {
             startActivity(Intent(this, WidgetPage::class.java))
+        }
+
+        binding.lib.clickWithTrigger {
+            startActivity(Intent(this, LibPage::class.java))
         }
     }
 }
