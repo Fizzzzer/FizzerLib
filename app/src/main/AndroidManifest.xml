@@ -29,6 +29,9 @@
         <activity
             android:name=".lib.LibPage"
             android:label="LibPage" />
+        <activity
+            android:name=".widget.RadiusCardViewPage"
+            android:label="RadiusCardViewPage" />
     </application>
 
 </manifest>

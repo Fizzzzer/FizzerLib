@@ -20,5 +20,9 @@ class WidgetPage : AppCompatActivity() {
         binding.circleProgressBar.clickWithTrigger {
             startActivity(Intent(this, CircleProgressBarPage::class.java))
         }
+
+        binding.roundCardView.clickWithTrigger {
+            startActivity(Intent(this, RadiusCardViewPage::class.java))
+        }
     }
 }
