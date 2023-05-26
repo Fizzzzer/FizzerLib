@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.fizzer.widget.view.RadiusCardView
+        android:id="@+id/cardView1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rcv_bottomLeftRadius="9dp"
+        app:rcv_bottomRightRadius="9dp"
+        app:rcv_topLeftRadius="9dp"
+        app:rcv_topRightRadius="9dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D13C74"/>
+    </com.fizzer.widget.view.RadiusCardView>
+
+    <com.fizzer.widget.view.RadiusCardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView1"
+        app:rcv_bottomLeftRadius="9dp"
+        app:rcv_bottomRightRadius="25dp"
+        app:rcv_topLeftRadius="3dp"
+        app:rcv_topRightRadius="0dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D13C74"/>
+    </com.fizzer.widget.view.RadiusCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
@@ -26,6 +27,19 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+}
+
+afterEvaluate{
+    publishing{
+        publications{
+            release(MavenPublication){
+                from components.release
+                groupId = 'com.fizzer'
+                artifactId = 'widget'
+                version = '1.2.0'
+            }
+        }
     }
 }
 

@@ -20,10 +20,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".widget.WidgetPage" />
+        <activity
+            android:name=".widget.WidgetPage"
+            android:label="WidgetPage" />
         <activity
             android:name=".widget.CircleProgressBarPage"
             android:label="CircleProgressBar" />
+        <activity
+            android:name=".lib.LibPage"
+            android:label="LibPage" />
+        <activity
+            android:name=".widget.RadiusCardViewPage"
+            android:label="RadiusCardViewPage" />
     </application>
 
 </manifest>
