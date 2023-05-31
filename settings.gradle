@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "FizzerLib"
-include ':app'
+include ':simple'
 include ':FizzerBaseLib'
 include ':FizzerWidget'
