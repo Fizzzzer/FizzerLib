@@ -2,6 +2,8 @@ package com.fizzer.base.lib.sp
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.fizzer.base.lib.ext.otherwise
+import com.fizzer.base.lib.ext.yes
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
@@ -12,22 +14,23 @@ import java.io.Serializable
  * @Email Fizzer53@sina.com
  * @Description:SharedPreference的实现类
  */
-internal class SPImpl(context: Context?) : ISharedPreferences {
-    private var mContext: Context? = context
+internal class SPImpl(context: Context, private var defaultFileName: String) : ISharedPreferences {
+    private var mContext: Context = context
 
     private var mSP: SharedPreferences? = null
     private var mEditor: SharedPreferences.Editor? = null
 
-    override fun file(fileName: String?): ISharedPreferences {
-        mContext?.let {
-            mSP = it.getSharedPreferences(fileName, Context.MODE_PRIVATE)
-            mEditor = mSP?.edit()
-        } ?: let {
-            throw RuntimeException("初始化上下文为空")
-        }
-        return this
+    init {
+        mSP = mContext.getSharedPreferences(defaultFileName, Context.MODE_PRIVATE)
+        mEditor = mSP?.edit()
     }
 
+    override fun file(fileName: String?): ISharedPreferences {
+        val tmpFile = fileName.isNullOrEmpty().yes { defaultFileName }.otherwise { fileName }
+        mSP = mContext.getSharedPreferences(tmpFile, Context.MODE_PRIVATE)
+        mEditor = mSP?.edit()
+        return this
+    }
 
     override fun putString(key: String, value: String) {
         mEditor?.let {

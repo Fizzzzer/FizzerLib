@@ -9,27 +9,11 @@ import com.tencent.mmkv.MMKV
  * @Date: 2022/8/18
  * @Description: SP 工具类
  */
-class SpInstance private constructor() {
+object SpFactory {
 
-
-    /**
-     * 当前SP的类型
-     */
-    private var mSpType = SP_TYPE_SP
-
-    /**
-     * 获取当前的SP实例
-     */
-    val mSp: ISharedPreferences? get() = _mSp
-
+    const val SP_TYPE_SP = "SP"
+    const val SP_TYPE_MMKV = "MMKV"
     private var _mSp: ISharedPreferences? = null
-
-    companion object {
-        const val SP_TYPE_SP = "SP"
-        const val SP_TYPE_MMKV = "MMKV"
-
-        val INSTANCE: SpInstance by lazy { SpInstance() }
-    }
 
     /**
      * 初始化
@@ -37,18 +21,24 @@ class SpInstance private constructor() {
      * @param context 当前上下文
      * 最好在Application里面进行初始化
      */
-    fun init(context: Context, type: String = SP_TYPE_SP) {
-        mSpType = type
-
+    fun init(context: Context, type: String = SP_TYPE_SP, fileName: String) {
         when (type) {
             SP_TYPE_MMKV -> {
                 MMKV.initialize(context)
                 _mSp = MMKVImpl()
             }
+
             SP_TYPE_SP -> {
-                _mSp = SPImpl(context)
+                _mSp = SPImpl(context, fileName)
             }
         }
+    }
+
+    fun getSp(fileName: String?): ISharedPreferences {
+        if (_mSp == null) {
+            throw RuntimeException("Please invoke init method first!!!")
+        }
+        return _mSp!!.file(fileName)
     }
 
 
