@@ -21,5 +21,10 @@
             style="@style/item_font"
             android:text="RoundCardView" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/LetterIndexBar"
+            style="@style/item_font"
+            android:text="LetterIndexBar" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
