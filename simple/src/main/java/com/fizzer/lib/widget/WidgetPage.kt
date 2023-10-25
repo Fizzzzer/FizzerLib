@@ -24,5 +24,8 @@ class WidgetPage : AppCompatActivity() {
         binding.roundCardView.clickWithTrigger {
             startActivity(Intent(this, RadiusCardViewPage::class.java))
         }
+        binding.LetterIndexBar.clickWithTrigger {
+            startActivity(Intent(this,LetterIndexBarPage::class.java))
+        }
     }
 }

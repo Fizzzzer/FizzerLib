@@ -32,6 +32,9 @@
         <activity
             android:name=".widget.RadiusCardViewPage"
             android:label="RadiusCardViewPage" />
+        <activity
+            android:name=".widget.LetterIndexBarPage"
+            android:label="LetterIndexBarPage" />
     </application>
 
 </manifest>

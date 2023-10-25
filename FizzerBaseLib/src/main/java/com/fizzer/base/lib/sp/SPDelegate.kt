@@ -1,8 +1,6 @@
 package com.fizzer.base.lib.sp
 
-import android.content.Context
 import java.io.Serializable
-import java.lang.IllegalArgumentException
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
