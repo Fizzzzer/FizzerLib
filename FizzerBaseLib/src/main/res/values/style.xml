@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--底部弹窗的进入和退出动画，单独写一份，写在上面的样式中不管用-->
+    <style name="bottom_dialog_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_bottom_dialog_exit</item>
+    </style>
+
+</resources>
