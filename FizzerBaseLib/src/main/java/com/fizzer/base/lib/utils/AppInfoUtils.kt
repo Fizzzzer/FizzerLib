@@ -16,6 +16,7 @@ object AppInfoUtils {
     /**
      * 获取当前APP的Version Name
      */
+    @JvmStatic
     fun getVersionName(context: Context?): String {
         context?.let {
             val pm = it.packageManager
@@ -31,6 +32,7 @@ object AppInfoUtils {
     /**
      * 获取当前APP的版本号
      */
+    @JvmStatic
     fun getVersionCode(context: Context?): Long {
         context?.let {
             val pm = it.packageManager
@@ -51,6 +53,7 @@ object AppInfoUtils {
      * 判断是否已安装了当前APP
      * @return true:已安装   false:未安装
      */
+    @JvmStatic
     fun isAppAvailable(context: Context?, packageName: String?): Boolean {
         if (packageName.isNullOrEmpty()) {
             return false
@@ -61,6 +64,21 @@ object AppInfoUtils {
             val pkgStr = it.packageName
             if (pkgStr.equals(packageName)) {
                 return true
+            }
+        }
+        return false
+    }
+
+    /**
+     * 判断当前的进程是否是APP的主进程
+     */
+    @JvmStatic
+    fun isMainProcess(context: Context): Boolean {
+        val pid = android.os.Process.myPid()
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (appProcess in activityManager.runningAppProcesses) {
+            if (appProcess.processName == context.packageName) {
+                return appProcess.pid == pid
             }
         }
         return false

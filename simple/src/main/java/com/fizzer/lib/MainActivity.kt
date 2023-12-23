@@ -2,11 +2,14 @@ package com.fizzer.lib
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
+import com.fizzer.base.lib.log.LogUtils
 import com.fizzer.lib.databinding.ActivityMainBinding
 import com.fizzer.lib.lib.LibPage
 import com.fizzer.lib.widget.WidgetPage
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
 
