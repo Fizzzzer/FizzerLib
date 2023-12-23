@@ -8,5 +8,5 @@ import androidx.fragment.app.Fragment
  * @Date: 2023/12/23
  * @Descriptor: 基类Fragment
  */
-class BaseFragment : Fragment() {
+open class BaseFragment : Fragment() {
 }

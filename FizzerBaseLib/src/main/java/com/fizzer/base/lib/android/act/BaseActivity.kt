@@ -8,5 +8,5 @@ import androidx.appcompat.app.AppCompatActivity
  * @Date: 2023/12/23
  * @Descriptor: 基类Activity
  */
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 }
