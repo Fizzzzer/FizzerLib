@@ -1,8 +1,9 @@
-package com.fizzer.base.lib.android
+package com.fizzer.base.lib.android.dialog
 
 import android.view.Gravity
 import androidx.viewbinding.ViewBinding
 import com.fizzer.base.lib.R
+import com.fizzer.base.lib.android.BaseViewModel
 import com.fizzer.base.lib.utils.UIUtils
 
 /**

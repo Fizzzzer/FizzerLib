@@ -26,5 +26,10 @@
             style="@style/item_font"
             android:text="LetterIndexBar" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/recycler"
+            style="@style/item_font"
+            android:text="玩转RecyclerView" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

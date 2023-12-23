@@ -16,6 +16,7 @@ object UIUtils {
     /**
      * DP 转成 PX像素
      */
+    @JvmStatic
     fun dp2px(context: Context?, dpValue: Float): Int {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
@@ -27,6 +28,7 @@ object UIUtils {
     /**
      * SP 转成 PX像素
      */
+    @JvmStatic
     fun sp2px(context: Context?, spValue: Float): Int {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_SP,
@@ -38,6 +40,7 @@ object UIUtils {
     /**
      * 获取Windows的宽度
      */
+    @JvmStatic
     fun getWindowWidth(context: Context?): Int {
         val wm = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -50,6 +53,7 @@ object UIUtils {
     /**
      * 获取屏幕的高度
      */
+    @JvmStatic
     fun getWindowHeight(context: Context?): Int {
         val wm = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

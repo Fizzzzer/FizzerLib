@@ -1,17 +1,15 @@
-package com.fizzer.base.lib.android
+package com.fizzer.base.lib.android.dialog
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.fizzer.base.lib.R
+import com.fizzer.base.lib.android.BaseViewModel
 import com.fizzer.base.lib.utils.UIUtils
 
 /**

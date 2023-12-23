@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.lib.databinding.ActivityWidgetPageBinding
+import com.fizzer.lib.widget.RecyclerView.RecyclerViewPage
 
 class WidgetPage : AppCompatActivity() {
 
@@ -26,6 +27,9 @@ class WidgetPage : AppCompatActivity() {
         }
         binding.LetterIndexBar.clickWithTrigger {
             startActivity(Intent(this,LetterIndexBarPage::class.java))
+        }
+        binding.recycler.clickWithTrigger {
+            startActivity(Intent(this,RecyclerViewPage::class.java))
         }
     }
 }

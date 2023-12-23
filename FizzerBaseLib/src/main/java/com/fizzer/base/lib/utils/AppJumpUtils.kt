@@ -17,6 +17,7 @@ object AppJumpUtils {
     /**
      * 调用系统拨打电话
      */
+    @JvmStatic
     fun callPhone(context: Context?, phone: String?) {
         if (phone.isNullOrEmpty()) {
             return
