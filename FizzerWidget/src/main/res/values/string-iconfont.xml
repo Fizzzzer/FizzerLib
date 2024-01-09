@@ -3,8 +3,10 @@
 <!-- 文档主要用来记录当前收录的一些IconFont资源 -->
 
 <resources>
-    <!--返回-->
+    <!--左箭头，返回-->
     <string name="iconFont_back">&#xe60e;</string>
+    <!--  右箭头，前进  -->
+    <string name="iconFont_forward">&#xe625;</string>
     <!--菜单 三个点(竖直方向)-->
     <string name="iconFont_menu">&#xe60c;</string>
     <!--播放按钮-->

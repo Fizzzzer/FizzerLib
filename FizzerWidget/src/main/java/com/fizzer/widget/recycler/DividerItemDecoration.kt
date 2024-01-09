@@ -9,6 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
+/**
+ * 分割线的ItemDecoration
+ *
+ * @param dividerGap 分割线的宽度
+ * @param dividerColor 分割线的颜色
+ * @param dividerMarginStart  分割线的marginStart值
+ * @param dividerMarginEnd   分割线的marginEnd值
+ * @param showStart 是否显示第一条数据的分割线
+ * @param showEnd  是否显示最后一条数据的分割线
+ */
 class DividerItemDecoration(
     var dividerGap: Int = 0, var dividerColor: Int = -1,
     var dividerMarginStart: Int = 0, var dividerMarginEnd: Int = 0,
