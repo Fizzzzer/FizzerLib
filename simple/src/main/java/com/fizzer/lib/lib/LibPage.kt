@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.base.lib.log.LogUtils
 import com.fizzer.base.lib.sp.SPDelegate
+import com.fizzer.base.lib.utils.AppInfoUtils
+import com.fizzer.base.lib.utils.AppJumpUtils
 import com.fizzer.lib.databinding.ActivityLibPageBinding
 
 class LibPage : AppCompatActivity() {
@@ -32,6 +34,10 @@ class LibPage : AppCompatActivity() {
         }
         binding.getAirMode.clickWithTrigger {
             password1 = 9
+        }
+
+        binding.openMarket.clickWithTrigger {
+            AppJumpUtils.openGoogleMarket(this,AppInfoUtils.getPkgName(this))
         }
     }
 }
