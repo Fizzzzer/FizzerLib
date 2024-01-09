@@ -59,12 +59,18 @@ class RecyclerViewPage : BaseActivity() {
         return list
     }
 
-    private fun initView() {
+    override fun initView() {
         binding.rv.apply {
             layoutManager = linearLayoutManager
             adapter = mAdapter
             addItemDecoration(dividerItemDecoration)
             mAdapter.data = getTestData()
         }
+    }
+
+    override fun initEvent() {
+    }
+
+    override fun lazyInitData() {
     }
 }
