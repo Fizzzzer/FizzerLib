@@ -31,4 +31,11 @@
         <!--   文案大小    -->
         <attr name="cpb_text_size" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ItemValueView">
+        <attr name="iv_item_name" format="string" />
+        <attr name="iv_item_show_arrow" format="boolean" />
+        <attr name="iv_item_value" format="string" />
+        <attr name="iv_item_icon" format="reference"/>
+    </declare-styleable>
 </resources>
