@@ -39,7 +39,7 @@ class LibPage : BaseActivity() {
         }
 
         binding.openMarket.clickWithTrigger {
-            AppJumpUtils.openGoogleMarket(this,AppInfoUtils.getPkgName(this))
+            AppJumpUtils.gotoMarket(context = this)
         }
     }
 

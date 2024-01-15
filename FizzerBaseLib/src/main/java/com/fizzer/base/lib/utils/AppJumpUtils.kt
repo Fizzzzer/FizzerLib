@@ -100,69 +100,15 @@ object AppJumpUtils {
         }
     }
 
+    /**
+     * 跳转到应用市场
+     */
     fun gotoMarket(context: Context) {
-        val intent = Intent(Intent.ACTION_VIEW)
+        val uri = Uri.parse("market://details?id=${AppInfoUtils.getPkgName(context)}")
+        val intent = Intent(Intent.ACTION_VIEW,uri)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        //        intent.setData(Uri.parse("market://details?id=" + "com.jrd.beauty"));
-        intent.data = Uri.parse("market://details?id=" + AppInfoUtils.getPkgName(context))
-        val keys = getKeys(context)
-        if (keys != null) {
-            intent.setClassName(keys[0]!!, keys[1]!!)
-        }
-        //修复某些老手机会因为找不到任何市场而报错
-        if (AppInfoUtils.isAppAvailable(context, intent.`package`)) {
-            context.startActivity(intent)
-        } else {
-            Toast.makeText(context, "无可用应用市场", Toast.LENGTH_SHORT).show()
-        }
+        context.startActivity(intent)
     }
 
-    /**
-     * 获取应用商店配置
-     */
-    private fun getKeys(context: Context): Array<String?>? {
-        val keys = arrayOfNulls<String>(2)
-        if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_MI_MARKET)) {
-            keys[0] = Market.PACKAGE_MI_MARKET
-            keys[1] = Market.MI_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_VIVO_MARKET)) {
-            keys[0] = Market.PACKAGE_VIVO_MARKET
-            keys[1] = Market.VIVO_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_OPPO_MARKET)) {
-            keys[0] = Market.PACKAGE_OPPO_MARKET
-            keys[1] = Market.OPPO_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_HUAWEI_MARKET)) {
-            keys[0] = Market.PACKAGE_HUAWEI_MARKET
-            keys[1] = Market.HUAWEI_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_ZTE_MARKET)) {
-            keys[0] = Market.PACKAGE_ZTE_MARKET
-            keys[1] = Market.ZTE_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_COOL_MARKET)) {
-            keys[0] = Market.PACKAGE_COOL_MARKET
-            keys[1] = Market.COOL_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_360_MARKET)) {
-            keys[0] = Market.PACKAGE_360_MARKET
-            keys[1] = Market.PACKAGE_360_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_MEIZU_MARKET)) {
-            keys[0] = Market.PACKAGE_MEIZU_MARKET
-            keys[1] = Market.MEIZU_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_TENCENT_MARKET)) {
-            keys[0] = Market.PACKAGE_TENCENT_MARKET
-            keys[1] = Market.TENCENT_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_ALI_MARKET)) {
-            keys[0] = Market.PACKAGE_ALI_MARKET
-            keys[1] = Market.ALI_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_WANDOUJIA_MARKET)) {
-            keys[0] = Market.PACKAGE_WANDOUJIA_MARKET
-            keys[1] = Market.WANDOUJIA_MARKET_PAGE
-        } else if (AppInfoUtils.isAppAvailable(context, Market.PACKAGE_UCWEB_MARKET)) {
-            keys[0] = Market.PACKAGE_UCWEB_MARKET
-            keys[1] = Market.UCWEB_MARKET_PAGE
-        }
-        return if (TextUtils.isEmpty(keys[0])) {
-            null
-        } else {
-            keys
-        }
-    }
+
 }
