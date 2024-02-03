@@ -36,8 +36,13 @@
             android:name=".widget.LetterIndexBarPage"
             android:label="LetterIndexBarPage" />
 
-        <activity android:name=".widget.RecyclerView.RecyclerViewPage"
-            android:label="玩转RecyclerView"/>
+        <activity
+            android:name=".widget.RecyclerView.RecyclerViewPage"
+            android:label="玩转RecyclerView" />
+
+        <activity
+            android:name=".widget.ItemValuePage"
+            android:label="ItemValuePage" />
     </application>
 
 </manifest>

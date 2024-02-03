@@ -19,6 +19,7 @@ open class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         mApplication = this
     }
 }
