@@ -38,6 +38,7 @@ class ItemValueView @JvmOverloads constructor(
             } ?: let {
                 binding.itemIcon.visibility = GONE
             }
+            ta.recycle()
         }
     }
 

@@ -84,4 +84,19 @@ object AppInfoUtils {
         return false
     }
 
+    /**
+     * 获取当前应用的包名
+     */
+    fun getPkgName(ctx: Context): String? {
+        var pkgName = "Unknow"
+        try {
+            val manager = ctx.packageManager
+            val info = manager.getPackageInfo(ctx.packageName, 0)
+            pkgName = info.packageName
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return pkgName
+    }
+
 }

@@ -26,10 +26,14 @@ class WidgetPage : AppCompatActivity() {
             startActivity(Intent(this, RadiusCardViewPage::class.java))
         }
         binding.LetterIndexBar.clickWithTrigger {
-            startActivity(Intent(this,LetterIndexBarPage::class.java))
+            startActivity(Intent(this, LetterIndexBarPage::class.java))
         }
         binding.recycler.clickWithTrigger {
-            startActivity(Intent(this,RecyclerViewPage::class.java))
+            startActivity(Intent(this, RecyclerViewPage::class.java))
+        }
+
+        binding.itemValue.clickWithTrigger {
+            startActivity(Intent(this, ItemValuePage::class.java))
         }
     }
 }

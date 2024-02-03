@@ -30,11 +30,11 @@ abstract class BaseDialog<VB : ViewBinding, T : BaseViewModel> : DialogFragment(
         return mViewBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getViewModelClass()?.let {
             mViewModel = ViewModelProvider(this).get(it)
         }
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onStart() {

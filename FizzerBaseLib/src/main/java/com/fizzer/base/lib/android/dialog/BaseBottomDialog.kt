@@ -15,7 +15,6 @@ import com.fizzer.base.lib.utils.UIUtils
  */
 abstract class BaseBottomDialog<VB : ViewBinding, T : BaseViewModel> : BaseDialog<VB, T>() {
 
-
     override fun onStart() {
         super.onStart()
         var attr = dialog?.window?.attributes
