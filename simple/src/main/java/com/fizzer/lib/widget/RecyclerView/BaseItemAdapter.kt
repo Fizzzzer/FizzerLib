@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.fizzer.lib.R
 
 class BaseItemAdapter : Adapter<BaseItemAdapter.BaseViewHolder>() {
-    var data = mutableListOf<String>()
+    var data = mutableListOf<ItemData>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -27,6 +27,6 @@ class BaseItemAdapter : Adapter<BaseItemAdapter.BaseViewHolder>() {
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.textView.text = data[position]
+        holder.textView.text = data[position].title
     }
 }
