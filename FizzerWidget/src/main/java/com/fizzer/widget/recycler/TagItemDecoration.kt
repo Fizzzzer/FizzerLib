@@ -77,11 +77,32 @@ class TagItemDecoration private constructor(private var builder: ItemBuilder) : 
     }
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        if (!builder.fixable) {
+            return
+        }
+
         val position = (parent.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
         val currentView = parent.findViewHolderForLayoutPosition(position)?.itemView
         val tag = builder.mData[position].getTitleTag()
 
         currentView?.let {
+            var flag = false
+            //防止数组越界
+            if ((position + 1) < builder.mData.size) {
+                //当前第一个可见的Item的tag，不等于其后一个item的tag，说明悬浮的View要切换了
+                if (tag != builder.mData[position + 1].getTitleTag()) {
+                    //当第一个可见的item在屏幕中还剩的高度小于title区域的高度时，我们也该开始做悬浮Title的“交换动画”
+                    if ((it.height + it.top) < builder.itemTagHeight) {
+                        c.save()
+                        flag = true
+                        c.translate(
+                            0f,
+                            (currentView.height + currentView.top - builder.itemTagHeight).toFloat()
+                        )
+                    }
+                }
+            }
+
             val startX = currentView.left.toFloat()
             val startY = 0f
             val endX = currentView.right.toFloat()
@@ -94,6 +115,7 @@ class TagItemDecoration private constructor(private var builder: ItemBuilder) : 
             val tagY =
                 (builder.itemTagHeight - (builder.itemTagHeight / 2 - mBounds.height() / 2)).toFloat()
             c.drawText(tag, tagX, tagY, mTagTextPaint)
+            if (flag) c.restore()
         }
     }
 
@@ -169,6 +191,9 @@ class TagItemDecoration private constructor(private var builder: ItemBuilder) : 
         //Tag的文本字体大小
         internal var tagTextSize: Int = 18
 
+        //标签是否可固定在界面的顶部，默认为true，
+        internal var fixable: Boolean = true
+
         /**
          * 设置Item Tag的高度
          */
@@ -198,6 +223,12 @@ class TagItemDecoration private constructor(private var builder: ItemBuilder) : 
          * 设置tag的文本颜色值
          */
         fun setTagTextColor(color: Int) = apply { tagTextColor = color }
+
+        /**
+         * 设置Tag是否固定在界面的顶部
+         * 如果设置为false，那么标签会随着滑动滑出界面外
+         */
+        fun setTagFixable(fix: Boolean) = apply { fixable = fix }
 
         /**
          * 设置tag的文本字体大小

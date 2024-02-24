@@ -42,6 +42,7 @@ class RecyclerViewPage : BaseVBActivity<ActivityRecyclerViewPageBinding>() {
             setItemTagHeight(UIUtils.dp2px(baseContext,25f))
             setItemMargin(UIUtils.dp2px(baseContext,15f))
             setItemBgColor(Color.parseColor("#FF0000"))
+            setTagFixable(true)
         }.builder()
     }
 
