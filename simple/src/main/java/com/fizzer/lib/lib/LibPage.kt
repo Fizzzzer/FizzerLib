@@ -7,8 +7,10 @@ import com.fizzer.base.lib.android.act.BaseActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.base.lib.log.LogUtils
 import com.fizzer.base.lib.sp.SPDelegate
+import com.fizzer.base.lib.toast.ToastUtils
 import com.fizzer.base.lib.utils.AppInfoUtils
 import com.fizzer.base.lib.utils.AppJumpUtils
+import com.fizzer.base.lib.utils.IDCardUtils
 import com.fizzer.lib.databinding.ActivityLibPageBinding
 
 class LibPage : BaseActivity() {
@@ -39,7 +41,9 @@ class LibPage : BaseActivity() {
         }
 
         binding.openMarket.clickWithTrigger {
-            AppJumpUtils.gotoMarket(context = this)
+            val id = "421022199105047511"
+            val result = IDCardUtils.instance.validateIDCard(id)
+            ToastUtils.getInstance().showToast(this,result.toString())
         }
     }
 
