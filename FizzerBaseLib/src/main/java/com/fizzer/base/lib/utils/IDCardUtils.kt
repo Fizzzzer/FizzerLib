@@ -5,6 +5,7 @@ import android.util.Log
 import com.fizzer.base.lib.log.LogUtils
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.GregorianCalendar
 import java.util.regex.Pattern
 
@@ -130,7 +131,8 @@ class IDCardUtils private constructor() {
 
         //================= 判断最后一位的值 ====================
         //对身份证前17位进行加权累加
-        val sdNumTotal = ai.mapIndexed { index, c -> (c.code - '0'.code) * wi[index] }.reduce { acc, i -> acc + i }
+        val sdNumTotal = ai.mapIndexed { index, c -> (c.code - '0'.code) * wi[index] }
+            .reduce { acc, i -> acc + i }
         val modeValue = sdNumTotal % 11
         val verifyCode = codeArr[modeValue]
         ai += verifyCode
@@ -162,6 +164,58 @@ class IDCardUtils private constructor() {
             Pattern.compile("^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))(\\s(((0?[0-9])|([1-2][0-3]))\\:([0-5]?[0-9])((\\s)|(\\:([0-5]?[0-9])))))?$")
         val m = pattern.matcher(strDate)
         return m.matches()
+    }
+
+    /**
+     * 根据身份证获取出生年月
+     * @return 返回值是一个数组列表，对应的位置分别为 年  月  日
+     */
+    fun getIDDate(idStr: String): Array<String> {
+        val ai = if (idStr.length == 18) {
+            idStr.substring(0, 17)
+        } else {
+            idStr.substring(1, 6) + "19" + idStr.substring(6, 15)
+        }
+        val year = ai.substring(6, 10)  //年
+        val month = ai.substring(10, 12)    //月
+        val day = ai.substring(12, 14)  //日
+        return arrayOf(year, month, day)
+    }
+
+    /**
+     * 获取ID里面的性别信息
+     * 1- 女生
+     * 2- 男生
+     */
+    fun getIDSex(idStr: String): Int {
+        val ai = if (idStr.length == 18) {
+            idStr.substring(0, 17)
+        } else {
+            idStr.substring(1, 6) + "19" + idStr.substring(6, 15)
+        }
+
+        val sex = ai.substring(16, 17)
+        return if (sex.toInt() % 2 == 0) {
+            1
+        } else {
+            2
+        }
+    }
+
+    /**
+     * 根据身份证的输入，返回对应的当前年龄
+     */
+    fun getIDAge(idStr: String): Int {
+        val date = Date()
+        val format = SimpleDateFormat("yyyy-MM-dd")
+        val currentYear = format.format(date).substring(0, 4).toInt()   //当前的年
+        val ai = if (idStr.length == 18) {
+            idStr.substring(0, 17)
+        } else {
+            idStr.substring(1, 6) + "19" + idStr.substring(6, 15)
+        }
+        val idYear = ai.substring(6, 10).toInt()
+        return currentYear - idYear
     }
 
 
