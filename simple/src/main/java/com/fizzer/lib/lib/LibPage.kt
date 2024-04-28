@@ -1,6 +1,7 @@
 package com.fizzer.lib.lib
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fizzer.base.lib.android.act.BaseActivity
@@ -11,6 +12,8 @@ import com.fizzer.base.lib.toast.ToastUtils
 import com.fizzer.base.lib.utils.AppInfoUtils
 import com.fizzer.base.lib.utils.AppJumpUtils
 import com.fizzer.base.lib.utils.IDCardUtils
+import com.fizzer.base.lib.utils.security.SecurityType
+import com.fizzer.base.lib.utils.security.SecurityUtils
 import com.fizzer.lib.databinding.ActivityLibPageBinding
 
 class LibPage : BaseActivity() {
@@ -41,9 +44,8 @@ class LibPage : BaseActivity() {
         }
 
         binding.openMarket.clickWithTrigger {
-            val id = "421022199105047511"
-            val result = IDCardUtils.instance.validateIDCard(id)
-            ToastUtils.getInstance().showToast(this,result.toString())
+            val str = "Fizzer"
+            Log.e("Fizzer",SecurityUtils.getEncoder(SecurityType.SHA256).encodeStr(str))
         }
     }
 

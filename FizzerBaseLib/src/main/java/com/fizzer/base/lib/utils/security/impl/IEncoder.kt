@@ -1,8 +1,8 @@
 package com.fizzer.base.lib.utils.security.impl
 
-interface ISecurity {
+interface IEncoder {
     /**
      * 加密字符串
      */
-    fun encodeStr():String
+    fun encodeStr(str:String):String
 }
