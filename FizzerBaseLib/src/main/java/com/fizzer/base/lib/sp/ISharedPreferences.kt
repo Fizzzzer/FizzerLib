@@ -10,8 +10,6 @@ import java.io.Serializable
  */
 interface ISharedPreferences {
 
-    fun file(fileName: String?): ISharedPreferences
-
     fun putString(key: String, value: String)
 
     fun getString(key: String, defaultValue: String): String

@@ -38,6 +38,7 @@ class LibPage : BaseActivity() {
         }
         binding.closeAirMode.clickWithTrigger {
             password = "Fizzer"
+            password1 = 10
         }
         binding.getAirMode.clickWithTrigger {
             restartApp()
