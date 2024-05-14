@@ -25,13 +25,6 @@ internal class SPImpl(context: Context, private var defaultFileName: String) : I
         mEditor = mSP?.edit()
     }
 
-    override fun file(fileName: String?): ISharedPreferences {
-        val tmpFile = fileName.isNullOrEmpty().yes { defaultFileName }.otherwise { fileName }
-        mSP = mContext.getSharedPreferences(tmpFile, Context.MODE_PRIVATE)
-        mEditor = mSP?.edit()
-        return this
-    }
-
     override fun putString(key: String, value: String) {
         mEditor?.let {
             mEditor?.putString(key, value)
