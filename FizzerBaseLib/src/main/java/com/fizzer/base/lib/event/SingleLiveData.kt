@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  */
 class SingleLiveData<T> : MutableLiveData<T>() {
     private val pending = AtomicBoolean(false)
+    private val TAG = "SingleLiveEvent"
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
@@ -32,9 +33,5 @@ class SingleLiveData<T> : MutableLiveData<T>() {
         pending.set(true)
         super.setValue(t)
     }
-
-
-    companion object {
-        private val TAG = "SingleLiveEvent"
-    }
+    
 }
