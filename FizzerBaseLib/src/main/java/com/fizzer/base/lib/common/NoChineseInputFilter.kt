@@ -18,12 +18,12 @@ class NoChineseInputFilter : InputFilter {
         source: CharSequence?, start: Int, end: Int,
         dest: Spanned?, dstart: Int, dend: Int
     ): CharSequence? {
-        if (source == null){
+        if (source == null) {
             return null
         }
 
-        for (index in start until end){
-            if(Character.UnicodeBlock.of(source[index]) == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS){
+        for (index in start until end) {
+            if (Character.UnicodeBlock.of(source[index]) == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) {
                 return ""
             }
         }
