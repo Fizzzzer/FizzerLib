@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        //这里是dev的提交
     }
 
     private fun initView() {
