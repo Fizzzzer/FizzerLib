@@ -36,6 +36,15 @@
         <attr name="iv_item_name" format="string" />
         <attr name="iv_item_show_arrow" format="boolean" />
         <attr name="iv_item_value" format="string" />
-        <attr name="iv_item_icon" format="reference"/>
+        <attr name="iv_item_icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TransformShapeImageView">
+        <!--  需要显示的图形样式 -->
+        <attr name="tsiv_mask" format="reference" />
+        <!-- 边框宽度 -->
+        <attr name="tsiv_stroke_width" format="dimension" />
+        <!-- 边框颜色 -->
+        <attr name="tsiv_stroke_color" format="color" />
     </declare-styleable>
 </resources>
