@@ -71,4 +71,12 @@ object DeviceInfoUtils {
         val nfcAdapter = nfcManager.defaultAdapter
         return nfcAdapter != null
     }
+
+    fun getBuildSDK():Int{
+        return Build.VERSION.SDK_INT
+    }
+
+    fun getAndroidVersion():String{
+        return Build.VERSION.RELEASE
+    }
 }
