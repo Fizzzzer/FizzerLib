@@ -35,5 +35,10 @@ class WidgetPage : AppCompatActivity() {
         binding.itemValue.clickWithTrigger {
             startActivity(Intent(this, ItemValuePage::class.java))
         }
+
+        binding.strokedTestView.clickWithTrigger {
+            startActivity(Intent(this, StrokedTestViewPage::class.java))
+        }
+
     }
 }
