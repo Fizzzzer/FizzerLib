@@ -43,6 +43,8 @@
         <activity
             android:name=".widget.ItemValuePage"
             android:label="ItemValuePage" />
+        <activity android:name=".widget.StrokedTestViewPage"
+            android:label="StrokedTestViewPage"/>
     </application>
 
 </manifest>

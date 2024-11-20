@@ -36,5 +36,10 @@
             style="@style/item_font"
             android:text="ItemValue" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/strokedTestView"
+            style="@style/item_font"
+            android:text="strokedTestView" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
