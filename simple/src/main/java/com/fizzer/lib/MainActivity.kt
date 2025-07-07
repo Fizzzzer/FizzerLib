@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         binding.lib.clickWithTrigger {
             startActivity(Intent(this, LibPage::class.java))
         }
+
+        binding.selectBar.onColorChange = {
+            binding.color.setBackgroundColor(it)
+        }
         //dev_1的提交—1
     }
 }
