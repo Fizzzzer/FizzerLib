@@ -36,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         binding.selectBar.onColorChange = {
             binding.color.setBackgroundColor(it)
         }
+
+
+        binding.roteView.onAngleChangedListener = {
+            Log.e("Fizzer","旋转角度 = $it")
+            binding.testImg.rotation = it
+        }
         //dev_1的提交—1
     }
 }

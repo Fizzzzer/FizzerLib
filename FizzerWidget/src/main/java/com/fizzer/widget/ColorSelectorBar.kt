@@ -19,7 +19,7 @@ class ColorSelectorBar @JvmOverloads constructor(
     private val HORIZONTAL = 1
     private val VERTICAL = 2
 
-    private var mOrientation = HORIZONTAL
+    private var mOrientation = VERTICAL
 
     private val mDefaultViewWidth = if (mOrientation == HORIZONTAL) 1000 else 100
 
@@ -183,5 +183,67 @@ class ColorSelectorBar @JvmOverloads constructor(
         val blue =
             (Color.blue(color1) + fraction * (Color.blue(color2) - Color.blue(color1))).toInt()
         return Color.argb(alpha, red, green, blue)
+    }
+
+//    fun getPositionFromColorByMutliColor(
+////        colors: IntArray,       // 渐变颜色数组
+//        positions: FloatArray,  // 颜色对应的位置数组
+//        targetColor: Int
+//    ): Float {
+//        val targetR = Color.red(targetColor)
+//        val targetG = Color.green(targetColor)
+//        val targetB = Color.blue(targetColor)
+//
+//        // 找到目标颜色所在的区间
+//        for (i in 0 until colorArrays.size - 1) {
+//            val startColor = colorArrays[i]
+//            val endColor = colorArrays[i + 1]
+//            val startPos = positions[i]
+//            val endPos = positions[i + 1]
+//
+//            // 检查目标颜色是否在当前区间内（简化判断，实际应使用更精确的方法）
+//            val startR = Color.red(startColor)
+//            val endR = Color.red(endColor)
+//            val inRRange = if (startR <= endR)
+//                targetR in startR..endR
+//            else
+//                targetR in endR..startR
+//
+//            if (inRRange) {
+//                // 计算在当前区间内的比例
+//                val localPosition = getPositionFromColor(startColor, endColor, targetColor)
+//                // 转换为全局位置
+//                return startPos + localPosition * (endPos - startPos)
+//            }
+//        }
+//
+//        return -1f // 未找到匹配的颜色区间
+//    }
+
+    fun getPositionFromColor(
+        startColor: Int,
+        endColor: Int,
+        targetColor: Int
+    ): Float {
+        // 分解颜色为 RGBA 分量
+        val startR = Color.red(startColor)
+        val startG = Color.green(startColor)
+        val startB = Color.blue(startColor)
+
+        val endR = Color.red(endColor)
+        val endG = Color.green(endColor)
+        val endB = Color.blue(endColor)
+
+        val targetR = Color.red(targetColor)
+        val targetG = Color.green(targetColor)
+        val targetB = Color.blue(targetColor)
+
+        // 分别计算 R、G、B 通道的位置比例
+        val rPosition = if (endR != startR) (targetR - startR).toFloat() / (endR - startR) else 0f
+        val gPosition = if (endG != startG) (targetG - startG).toFloat() / (endG - startG) else 0f
+        val bPosition = if (endB != startB) (targetB - startB).toFloat() / (endB - startB) else 0f
+
+        // 返回三个通道的平均值（更精确）
+        return (rPosition + gPosition + bPosition) / 3f
     }
 }
