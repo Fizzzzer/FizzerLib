@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FizzerLib</string>
+
+    <string name="image_done">完成</string>
+    <string name="image_cancel">取消</string>
+
+    <string-array name="crop_ratios">
+        <item>自由</item>
+        <item>1:1 (正方形)</item>
+        <item>4:3 (标准)</item>
+        <item>16:9 (宽屏)</item>
+        <item>2:3 (人像)</item>
+    </string-array>
 </resources>
