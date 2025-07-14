@@ -3,6 +3,7 @@ package com.fizzer.lib.widget.ImageEditor.editor.clip;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
 
 import com.fizzer.lib.widget.ImageEditor.editor.PictureEditor;
@@ -16,7 +17,7 @@ public class DefaultClipWindowRender implements EditClipWindow.IClipRender {
     float CLIP_THICKNESS_SEWING = 8f; //角边厚度
     int COLOR_CELL = Color.WHITE;
     int COLOR_FRAME = Color.WHITE;
-    int COLOR_CORNER = Color.RED;
+    int COLOR_CORNER = Color.WHITE;
     int COLOR_SHADE = 0xCC000000;
 
     /**
@@ -58,7 +59,7 @@ public class DefaultClipWindowRender implements EditClipWindow.IClipRender {
     }
 
     @Override
-    public void onDraw(Canvas canvas, RectF frame) {
+    public void onDraw(Canvas canvas, RectF frame,float angle) {
         float[] size = {frame.width(), frame.height()};
         for (int i = 0; i < mBaseSizes.length; i++) {
             for (int j = 0; j < mBaseSizes[i].length; j++) {
@@ -91,5 +92,15 @@ public class DefaultClipWindowRender implements EditClipWindow.IClipRender {
         canvas.drawLines(mCorners, mPaint);
 
         canvas.drawCircle((frame.left + frame.right) /2,(frame.top + frame.bottom)/2,50f,mPaint);
+    }
+
+    @Override
+    public RectF getRotateFrame() {
+        return null;
+    }
+
+    @Override
+    public Point getRotateAnchor() {
+        return null;
     }
 }

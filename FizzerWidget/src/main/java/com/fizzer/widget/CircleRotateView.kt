@@ -36,8 +36,6 @@ class CircleRotateView @JvmOverloads constructor(
     //锚点
     private val mAnchorPoint = Point()
 
-    private val mViewRect = RectF()
-
     //绘制弧形的半径
     private var mRadius = 0f
 
@@ -90,12 +88,6 @@ class CircleRotateView @JvmOverloads constructor(
         mAnchorPoint.set(w / 2, 0)
         //设置弧形半径
         mRadius = Math.min(w.toFloat(), h.toFloat() * 2) * 0.5f - 10
-        mViewRect.set(
-            mAnchorPoint.x - mRadius,
-            mAnchorPoint.y - mRadius,
-            mAnchorPoint.x + mRadius,
-            mAnchorPoint.y + mRadius
-        )
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -105,7 +97,6 @@ class CircleRotateView @JvmOverloads constructor(
         // 旋转整个画布（使整个轮盘旋转）
         canvas?.rotate(currentAngle, mAnchorPoint.x.toFloat(), mAnchorPoint.y.toFloat())
         canvas?.drawCircle(mAnchorPoint.x.toFloat(), mAnchorPoint.y.toFloat(), 5f, mCanvasPaint)
-//        canvas?.drawArc(mViewRect, 0f, 180f, true, mCanvasPaint)
 
         drawMark(canvas)
 
@@ -122,7 +113,6 @@ class CircleRotateView @JvmOverloads constructor(
         for (index in MAX_ANGLE_VALUE.toInt() downTo MIN_ANGLE_VALUE.toInt() step 2) {
             // 计算刻度位置（从0度开始，按比例分布）
             val angle = (-(index - MAX_ANGLE_VALUE)) / ANGLE_VALUE_RANGE * 180f
-//            Log.e("Fizzer", "angle = $angle i = $index")
             val rad = Math.toRadians(angle.toDouble()).toFloat()
             // 计算刻度线的起点和终点
             val startX = mAnchorPoint.x + mRadius * cos(rad)

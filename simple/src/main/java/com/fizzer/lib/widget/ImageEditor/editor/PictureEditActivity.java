@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fizzer.lib.R;
 import com.fizzer.lib.widget.ImageEditor.editor.bean.StickerText;
+import com.fizzer.lib.widget.ImageEditor.editor.clip.RotateClipRender;
 import com.fizzer.lib.widget.ImageEditor.editor.ui.PictureEditView;
 import com.fizzer.lib.widget.ImageEditor.editor.ui.widget.ColorGroup;
 import com.fizzer.lib.widget.ImageEditor.editor.ui.widget.ProgressDialog;
@@ -105,6 +106,7 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         mPictureEditView.postDelayed(new Runnable() {
             @Override
             public void run() {
+                PictureEditor.getInstance().setGlobalClipWindowRender(new RotateClipRender());
                 mPictureEditView.setMode(EditMode.CLIP);
             }
         },500);

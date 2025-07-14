@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:inAnimation="@anim/anim_fade_in"
+        android:visibility="gone"
         android:outAnimation="@anim/anim_fade_out">
 
         <include layout="@layout/edit_opt_layout" />

@@ -562,8 +562,8 @@ public class PictureEditView extends FrameLayout implements Runnable, ScaleGestu
         // empty implementation.
     }
 
-    private boolean onScroll(float dx, float dy) {
-        EditState state = mPicPresenter.onScroll(getScrollX(), getScrollY(), -dx, -dy);
+    private boolean onScroll(MotionEvent event,float dx, float dy) {
+        EditState state = mPicPresenter.onScroll(event,getScrollX(), getScrollY(), -dx, -dy);
         if (state != null) {
             toApplyEditState(state);
             return true;
@@ -580,7 +580,7 @@ public class PictureEditView extends FrameLayout implements Runnable, ScaleGestu
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            return PictureEditView.this.onScroll(distanceX, distanceY);
+            return PictureEditView.this.onScroll(e2,distanceX, distanceY);
         }
 
         @Override

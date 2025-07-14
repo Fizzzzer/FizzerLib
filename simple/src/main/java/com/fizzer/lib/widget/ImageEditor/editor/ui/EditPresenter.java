@@ -11,6 +11,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.util.Log;
+import android.view.MotionEvent;
 
 
 import com.fizzer.lib.widget.ImageEditor.editor.EditMode;
@@ -19,6 +21,8 @@ import com.fizzer.lib.widget.ImageEditor.editor.bean.EditState;
 import com.fizzer.lib.widget.ImageEditor.editor.bean.PaintPath;
 import com.fizzer.lib.widget.ImageEditor.editor.clip.Anchor;
 import com.fizzer.lib.widget.ImageEditor.editor.clip.EditClipWindow;
+import com.fizzer.lib.widget.ImageEditor.editor.clip.EditClipWindow.RotateListener;
+import com.fizzer.lib.widget.ImageEditor.editor.clip.RotateClipRender;
 import com.fizzer.lib.widget.ImageEditor.editor.sticker.ISticker;
 import com.fizzer.lib.widget.ImageEditor.editor.util.EditUtils;
 import com.fizzer.lib.widget.ImageEditor.editor.util.Utils;
@@ -47,6 +51,8 @@ public class EditPresenter {
     private boolean isRequestToBaseFitting = false;
     private boolean isAnimCanceled = false;
     private final Path mShade = new Path();
+
+    private boolean isRotateView = false;
 
     // 裁剪窗口
     private final EditClipWindow mClipWin = new EditClipWindow();
@@ -95,6 +101,15 @@ public class EditPresenter {
         mPaint.setPathEffect(new CornerPathEffect(PictureEditor.getInstance().getDefaultDoodleWidth()));
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
+
+        mClipWin.setRotateListener(new RotateListener(){
+
+            @Override
+            public void rotate(float angle) {
+                Log.e("111","angle = " + 4 * angle / 9);
+                setTargetRotate(angle);
+            }
+        });
     }
 
     public void setClipWindowRender(EditClipWindow.IClipRender clipRender) {
@@ -541,6 +556,8 @@ public class EditPresenter {
         moveToBackground(mForeSticker);
         if (mMode == EditMode.CLIP) {
             mAnchor = mClipWin.getAnchor(x, y);
+            isRotateView = mClipWin.isRotate(x,y);
+            Log.e("Fizzer","isRotate = " + isRotateView);
         }
     }
 
@@ -560,8 +577,9 @@ public class EditPresenter {
 
     }
 
-    public EditState onScroll(float scrollX, float scrollY, float dx, float dy) {
+    public EditState onScroll(MotionEvent event,float scrollX, float scrollY, float dx, float dy) {
         if (mMode == EditMode.CLIP) {
+            Log.e("Fizzer","scrollX = " + scrollX);
             mClipWin.setShowShade(false);
             if (mAnchor != null) {
                 mClipWin.onScroll(mAnchor, dx, dy);
@@ -573,6 +591,12 @@ public class EditPresenter {
                 RectF frame = mClipWin.getOffsetFrame(scrollX, scrollY);
                 EditState state = new EditState(scrollX, scrollY, getScale(), getTargetRotate());
                 state.rConcat(EditUtils.fillHoming(frame, clipFrame, mClipFrame.centerX(), mClipFrame.centerY()));
+                return state;
+            }
+
+            if(isRotateView){
+                mClipWin.onRotateMark(event.getX(),event.getY());
+                EditState state = new EditState(scrollX, scrollY, getScale(), getTargetRotate());
                 return state;
             }
         }

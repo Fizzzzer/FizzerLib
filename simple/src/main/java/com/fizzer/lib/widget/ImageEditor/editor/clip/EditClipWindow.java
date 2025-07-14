@@ -3,7 +3,9 @@ package com.fizzer.lib.widget.ImageEditor.editor.clip;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.RectF;
+import android.util.Log;
 
 import com.fizzer.lib.widget.ImageEditor.editor.PictureEditor;
 import com.fizzer.lib.widget.ImageEditor.editor.util.EditUtils;
@@ -150,7 +152,7 @@ public class EditClipWindow {
             return;
         }
 
-        getRender().onDraw(canvas, mFrame);
+        getRender().onDraw(canvas, mFrame,mCurrentAngle);
     }
 
 //    public void onDrawShade(Canvas canvas) {
@@ -206,6 +208,56 @@ public class EditClipWindow {
         return mWindowRender;
     }
 
+    public boolean isRotate(Float x, Float y) {
+        RectF rotateFrame = getRender().getRotateFrame();
+        mLastAngle = calculateAngle(x,y);
+        if (rotateFrame != null) {
+            return x > rotateFrame.left && x < rotateFrame.right && y > rotateFrame.top && y < rotateFrame.bottom;
+        }
+        return false;
+    }
+
+    public float mLastAngle = 0f;
+    private float mCurrentAngle = 0f;
+    public void onRotateMark(float x,float y){
+
+        float touchAngle = calculateAngle(x,y);
+        float angleDelta = touchAngle - mLastAngle;
+        float rotateAngle = mCurrentAngle + angleDelta;
+        if(rotateAngle < -90) {
+            mCurrentAngle = -90;
+        }else if(rotateAngle > 90){
+            mCurrentAngle = 90;
+        }else{
+            mCurrentAngle = rotateAngle;
+        }
+        Log.e("Fizzer", "currentAngle = " + mCurrentAngle);
+        mRotateListener.rotate(((mCurrentAngle * 180 / 90)));
+        mLastAngle = touchAngle;
+    }
+
+    private float calculateAngle(float x,float y){
+        Point mRotateAnchor = getRender().getRotateAnchor();
+        if(mRotateAnchor != null){
+            double dx = x - mRotateAnchor.x;
+            double dy = y - mRotateAnchor.y;
+            float angle = (float) Math.toDegrees(Math.atan2(dy,dx));
+            if (angle < 0) angle += 360;
+            return angle;
+        }
+        return 0f;
+    }
+    private RotateListener mRotateListener = null;
+
+    public void setRotateListener(RotateListener listener){
+        mRotateListener = listener;
+    }
+
+
+    public interface RotateListener{
+        void rotate(float angle);
+    }
+
     public void setRender(IClipRender clipRender) {
         mWindowRender = clipRender;
     }
@@ -215,6 +267,10 @@ public class EditClipWindow {
 
         float getClipMargin();
 
-        void onDraw(Canvas canvas, RectF frame);
+        void onDraw(Canvas canvas, RectF frame,float angle);
+
+        RectF getRotateFrame();
+
+        Point getRotateAnchor();
     }
 }
