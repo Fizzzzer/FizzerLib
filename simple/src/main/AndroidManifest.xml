@@ -45,6 +45,8 @@
             android:label="ItemValuePage" />
         <activity android:name=".widget.StrokedTestViewPage"
             android:label="StrokedTestViewPage"/>
+        <activity android:name=".widget.RotateMarkPage"
+            android:label="RotateMarkPage"/>
     </application>
 
 </manifest>

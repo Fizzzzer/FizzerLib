@@ -40,5 +40,9 @@ class WidgetPage : AppCompatActivity() {
             startActivity(Intent(this, StrokedTestViewPage::class.java))
         }
 
+        binding.rotateMarkView.clickWithTrigger {
+            startActivity(Intent(this, RotateMarkPage::class.java))
+        }
+
     }
 }

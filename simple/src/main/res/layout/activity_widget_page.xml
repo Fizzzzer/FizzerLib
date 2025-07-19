@@ -41,5 +41,10 @@
             style="@style/item_font"
             android:text="strokedTestView" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/rotateMarkView"
+            style="@style/item_font"
+            android:text="RotateMarkView" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
