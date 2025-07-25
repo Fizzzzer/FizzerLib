@@ -44,5 +44,9 @@ class WidgetPage : AppCompatActivity() {
             startActivity(Intent(this, RotateMarkPage::class.java))
         }
 
+        binding.imageClip.clickWithTrigger {
+            startActivity(Intent(this, ImageClipPage::class.java))
+        }
+
     }
 }
