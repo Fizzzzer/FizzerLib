@@ -6,12 +6,14 @@ import android.graphics.Canvas
 import android.graphics.Matrix
 import android.graphics.Rect
 import android.graphics.RectF
+import android.util.Log
 import com.fizzer.base.lib.android.act.BaseVBActivity
 import com.fizzer.base.lib.ext.clickWithTrigger
 import com.fizzer.lib.R
 import com.fizzer.lib.databinding.ActivityImageClipLayoutBinding
 import kotlin.math.min
 import androidx.core.graphics.createBitmap
+import kotlinx.coroutines.flow.combine
 
 class ImageClipPage : BaseVBActivity<ActivityImageClipLayoutBinding>() {
     override fun bindingInflate() = ActivityImageClipLayoutBinding.inflate(layoutInflater)
@@ -41,6 +43,19 @@ class ImageClipPage : BaseVBActivity<ActivityImageClipLayoutBinding>() {
 //        )
 //        binding.imageSrc.scaleX = 1.5f
 //        binding.imageSrc.scaleY = 1.5f
+
+        binding.clip.clickWithTrigger {
+            binding.imageSrc.getClipBitmap()?.let {
+                binding.imageResult.setImageBitmap(it)
+            }?:let {
+                Log.e("Fizzer","获取裁剪图片为空")
+            }
+
+        }
+
+        binding.rotate.clickWithTrigger {
+            binding.imageSrc.rotateImage()
+        }
     }
 
     override fun lazyInitData() {
