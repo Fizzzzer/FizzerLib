@@ -53,6 +53,10 @@
         <activity
             android:name=".widget.ImageClipPage"
             android:label="ImageClipPage" />
+        <activity
+            android:name=".widget.TextDrawablePage"
+            android:label="TextDrawablePage" />
+
     </application>
 
 </manifest>

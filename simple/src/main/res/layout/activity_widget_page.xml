@@ -51,5 +51,10 @@
             style="@style/item_font"
             android:text="ImageClip" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textDrawable"
+            style="@style/item_font"
+            android:text="TextDrawable" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

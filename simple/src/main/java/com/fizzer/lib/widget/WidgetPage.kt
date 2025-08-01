@@ -48,5 +48,9 @@ class WidgetPage : AppCompatActivity() {
             startActivity(Intent(this, ImageClipPage::class.java))
         }
 
+        binding.textDrawable.clickWithTrigger {
+            startActivity(Intent(this, TextDrawablePage::class.java))
+        }
+
     }
 }
