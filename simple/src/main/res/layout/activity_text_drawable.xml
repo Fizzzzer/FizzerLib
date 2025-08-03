@@ -9,7 +9,7 @@
         android:id="@+id/text"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="你好你好你好你好你好你好你好你好你好你好你好你好"
+        android:text="你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好"
         android:textSize="@dimen/sp_18"
         android:gravity="center"
         android:padding="@dimen/sp_18"

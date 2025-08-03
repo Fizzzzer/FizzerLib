@@ -13,12 +13,12 @@ class TextDrawablePage : BaseVBActivity<ActivityTextDrawableBinding>() {
 
         val textWrapDrawable = TextDrawable().apply {
             setTextView(binding.text)
-            backgroundColor = Color.RED // 设置背景色                         // 设置圆角半径                 // 设置内边距
+            backgroundColor = Color.RED // 设置背景色
         }
 
 // 将Drawable设置为TextView的背景
         binding.text.background = textWrapDrawable
-        binding.text.setBackgroundColor(Color.YELLOW)
+//        binding.text.setBackgroundColor(Color.YELLOW)
     }
 
     override fun initEvent() {

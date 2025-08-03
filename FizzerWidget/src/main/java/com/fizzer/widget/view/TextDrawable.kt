@@ -11,6 +11,7 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.text.TextPaint
+import android.util.Log
 import android.widget.TextView
 
 class TextDrawable : Drawable() {
@@ -64,16 +65,19 @@ class TextDrawable : Drawable() {
         val textView = this.textView ?: return
         val layout = textView.layout ?: return
 
+
+
         // 获取文字总行数
         val lineCount = layout.lineCount
         if (lineCount == 0) return
-
+        Log.e("Fizzer", "lineCount = $lineCount")
         // 保存画布状态
         canvas.save()
 
         // 平移到Drawable的绘制区域
-        canvas.translate(25f, 25f)
+        canvas.translate(marginPx * 2, marginPx * 2)
 
+        rectList.clear()
         // 逐行绘制背景
         for (i in 0 until lineCount) {
             // 获取每行文字的边界
@@ -89,27 +93,34 @@ class TextDrawable : Drawable() {
             rectList.add(rect)
 //            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
         }
-        val firstRect = rectList[0]
-        val secRect = rectList[1]
-        val thRect = rectList[2]
-        mAreaPath.apply {
-            reset()
-            moveTo(firstRect.left - marginPx , firstRect.top - marginPx)
-            lineTo(firstRect.right + marginPx, firstRect.top - marginPx)
-            lineTo(secRect.right + marginPx,secRect.top)
-            lineTo(secRect.right + marginPx,secRect.bottom + marginPx)
-            lineTo(thRect.right + marginPx,thRect.top + marginPx)
-            lineTo(thRect.right + marginPx,thRect.bottom + marginPx)
-            lineTo(thRect.left - marginPx,thRect.bottom + marginPx)
-            lineTo(thRect.left- marginPx,thRect.top + marginPx)
-            lineTo(secRect.left - marginPx,secRect.bottom + marginPx)
-            lineTo(secRect.left - marginPx,secRect.top)
-            lineTo(firstRect.left - marginPx,firstRect.bottom)
-            close()
 
+        //连线右边区域
+        rectList.forEachIndexed { index, rectF ->
+            Log.e("Fizzer","index up = $index")
+            if (index == 0) {
+                mAreaPath.reset()
+                mAreaPath.moveTo(rectF.left - marginPx, rectF.top - marginPx)
+                mAreaPath.lineTo(rectF.right + marginPx, rectF.top - marginPx)
+                mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
+            } else {
+                mAreaPath.lineTo(rectF.right + marginPx, rectF.top + marginPx)
+                mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
+            }
+        }
+
+        //连线左边区域
+        for (index in rectList.lastIndex downTo 0) {
+            val rectF = rectList[index]
+            Log.e("Fizzer","index down= $index")
+            if (index == 0) {
+                mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
+                mAreaPath.close()
+            } else {
+                mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
+                mAreaPath.lineTo(rectF.left - marginPx, rectF.top + marginPx)
+            }
         }
         canvas.drawPath(mAreaPath, paint)
-
         canvas.restore()
     }
 
@@ -148,14 +159,14 @@ class TextDrawable : Drawable() {
             maxWidth = maxWidth.coerceAtLeast(layout.getLineRight(i) - layout.getLineLeft(i))
         }
 
-        return maxWidth.toInt() + 50
+        return maxWidth.toInt()
     }
 
     override fun getIntrinsicHeight(): Int {
         val textView = this.textView ?: return -1
         val layout = textView.layout ?: return -1
 
-        return layout.height + 50
+        return layout.height
     }
 
 
