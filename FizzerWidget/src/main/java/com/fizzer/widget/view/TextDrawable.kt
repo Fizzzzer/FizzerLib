@@ -20,7 +20,7 @@ class TextDrawable : Drawable() {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.LTGRAY // 默认背景色
         style = Paint.Style.FILL_AND_STROKE
-        pathEffect = CornerPathEffect(20f)
+        pathEffect = CornerPathEffect(cornerRadius)
     }
 
     private val marginPx = 25f
@@ -34,9 +34,10 @@ class TextDrawable : Drawable() {
     private var textView: TextView? = null
 
     // 圆角半径
-    var cornerRadius = 4f
+    var cornerRadius = 20f
         set(value) {
             field = value
+            paint.pathEffect = CornerPathEffect(value)
             invalidateSelf()
         }
 
@@ -56,7 +57,6 @@ class TextDrawable : Drawable() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 invalidateSelf()
             }
-
             override fun afterTextChanged(s: android.text.Editable?) {}
         })
     }
@@ -65,12 +65,9 @@ class TextDrawable : Drawable() {
         val textView = this.textView ?: return
         val layout = textView.layout ?: return
 
-
-
         // 获取文字总行数
         val lineCount = layout.lineCount
         if (lineCount == 0) return
-        Log.e("Fizzer", "lineCount = $lineCount")
         // 保存画布状态
         canvas.save()
 
@@ -96,7 +93,6 @@ class TextDrawable : Drawable() {
 
         //连线右边区域
         rectList.forEachIndexed { index, rectF ->
-            Log.e("Fizzer","index up = $index")
             if (index == 0) {
                 mAreaPath.reset()
                 mAreaPath.moveTo(rectF.left - marginPx, rectF.top - marginPx)
@@ -111,7 +107,6 @@ class TextDrawable : Drawable() {
         //连线左边区域
         for (index in rectList.lastIndex downTo 0) {
             val rectF = rectList[index]
-            Log.e("Fizzer","index down= $index")
             if (index == 0) {
                 mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
                 mAreaPath.close()
@@ -168,6 +163,4 @@ class TextDrawable : Drawable() {
 
         return layout.height
     }
-
-
 }
