@@ -15,20 +15,11 @@ import android.util.Log
 import android.widget.TextView
 
 class TextDrawable : Drawable() {
-
-    // 画笔
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.LTGRAY // 默认背景色
-        style = Paint.Style.FILL_AND_STROKE
-        pathEffect = CornerPathEffect(cornerRadius)
-    }
-
     private val marginPx = 25f
 
     private val mAreaPath = Path()
 
     val rectList = mutableListOf<RectF>()
-
 
     // 持有TextView的引用以获取文字布局信息
     private var textView: TextView? = null
@@ -48,6 +39,12 @@ class TextDrawable : Drawable() {
             paint.color = value
             invalidateSelf()
         }
+    // 画笔
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.LTGRAY // 默认背景色
+        style = Paint.Style.FILL_AND_STROKE
+        pathEffect = CornerPathEffect(cornerRadius)
+    }
 
     fun setTextView(textView: TextView) {
         this.textView = textView
@@ -88,7 +85,6 @@ class TextDrawable : Drawable() {
 
             // 绘制圆角矩形背景
             rectList.add(rect)
-//            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
         }
 
         //连线右边区域
