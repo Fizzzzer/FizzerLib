@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.fizzer.base.lib.android.act.BaseActivity
 import com.fizzer.base.lib.android.act.BaseVBActivity
 import com.fizzer.base.lib.utils.UIUtils
@@ -83,6 +84,8 @@ class RecyclerViewPage : BaseVBActivity<ActivityRecyclerViewPageBinding>() {
             addItemDecoration(tagItemDecoration)
             mAdapter.data = getTestData()
         }
+
+        binding.indicator.bindWithRecyclerView(binding.rv, RecyclerView.VERTICAL)
     }
 
     override fun initEvent() {

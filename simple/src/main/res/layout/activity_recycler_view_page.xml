@@ -17,4 +17,12 @@
         tools:itemCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_rv_layout" />
+
+    <com.fizzer.widget.view.RecyclerViewIndicator
+        android:id="@+id/indicator"
+        android:layout_width="10dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
