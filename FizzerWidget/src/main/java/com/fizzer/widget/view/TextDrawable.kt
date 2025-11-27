@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.ColorFilter
 import android.graphics.CornerPathEffect
+import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.PixelFormat
@@ -15,7 +16,7 @@ import android.util.Log
 import android.widget.TextView
 
 class TextDrawable : Drawable() {
-    private val marginPx = 25f
+    private val marginPx = 20f
 
     private val mAreaPath = Path()
 
@@ -39,6 +40,11 @@ class TextDrawable : Drawable() {
             paint.color = value
             invalidateSelf()
         }
+
+    private val m = Matrix().apply {
+        setTranslate(15f, 20f)
+    }
+
     // 画笔
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.LTGRAY // 默认背景色
@@ -54,6 +60,7 @@ class TextDrawable : Drawable() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 invalidateSelf()
             }
+
             override fun afterTextChanged(s: android.text.Editable?) {}
         })
     }
@@ -93,10 +100,44 @@ class TextDrawable : Drawable() {
                 mAreaPath.reset()
                 mAreaPath.moveTo(rectF.left - marginPx, rectF.top - marginPx)
                 mAreaPath.lineTo(rectF.right + marginPx, rectF.top - marginPx)
+                if (lineCount >= 2) {
+                    val nextLineRect = rectList[1]
+                    if (rectF.right < nextLineRect.right) {
+                        mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom - marginPx)
+                    } else {
+                        mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
+                    }
+                } else {
+                    mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
+                }
+            } else if (index == lineCount - 1) {
+                if (lineCount >= 2) {
+                    val preLineRect = rectList[index - 1]
+                    if (rectF.right > preLineRect.right) {
+                        mAreaPath.lineTo(rectF.right + marginPx, rectF.top - marginPx)
+                    } else {
+                        mAreaPath.lineTo(rectF.right + marginPx, rectF.top + marginPx)
+                    }
+                } else {
+                    mAreaPath.lineTo(rectF.right + marginPx, rectF.top + marginPx)
+                }
+
                 mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
             } else {
-                mAreaPath.lineTo(rectF.right + marginPx, rectF.top + marginPx)
-                mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
+
+                val preLineRect = rectList[index - 1]
+                if (rectF.right > preLineRect.right) {
+                    mAreaPath.lineTo(rectF.right + marginPx, rectF.top - marginPx)
+                } else {
+                    mAreaPath.lineTo(rectF.right + marginPx, rectF.top + marginPx)
+                }
+
+                val nextLineRect = rectList[index + 1]
+                if (rectF.right < nextLineRect.right) {
+                    mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom - marginPx)
+                } else {
+                    mAreaPath.lineTo(rectF.right + marginPx, rectF.bottom + marginPx)
+                }
             }
         }
 
@@ -104,13 +145,46 @@ class TextDrawable : Drawable() {
         for (index in rectList.lastIndex downTo 0) {
             val rectF = rectList[index]
             if (index == 0) {
-                mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
+                if (lineCount >= 2) {
+                    val nextLineRect = rectList[1]
+                    if (rectF.left > nextLineRect.left) {
+                        mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom - marginPx)
+                    } else {
+                        mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
+                    }
+                } else {
+                    mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
+                }
                 mAreaPath.close()
-            } else {
+            } else if (index == lineCount - 1) {
                 mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
-                mAreaPath.lineTo(rectF.left - marginPx, rectF.top + marginPx)
+                if (lineCount >= 2) {
+                    val preLineRect = rectList[index - 1]
+                    if (rectF.left < preLineRect.left) {
+                        mAreaPath.lineTo(rectF.left - marginPx, rectF.top - marginPx)
+                    } else {
+                        mAreaPath.lineTo(rectF.left - marginPx, rectF.top + marginPx)
+                    }
+                } else {
+                    mAreaPath.lineTo(rectF.left - marginPx, rectF.top + marginPx)
+                }
+            } else {
+                val nextLineRect = rectList[index + 1]
+                if (rectF.left > nextLineRect.left) {
+                    mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom - marginPx)
+                } else {
+                    mAreaPath.lineTo(rectF.left - marginPx, rectF.bottom + marginPx)
+                }
+
+                val preLineRect = rectList[index - 1]
+                if (rectF.left < preLineRect.left) {
+                    mAreaPath.lineTo(rectF.left - marginPx, rectF.top - marginPx)
+                } else {
+                    mAreaPath.lineTo(rectF.left - marginPx, rectF.top + marginPx)
+                }
             }
         }
+        mAreaPath.transform(m)
         canvas.drawPath(mAreaPath, paint)
         canvas.restore()
     }
