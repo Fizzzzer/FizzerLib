@@ -5,8 +5,6 @@ import android.graphics.Rect
 import android.util.TypedValue
 import com.fizzer.base.lib.android.act.BaseVBActivity
 import com.fizzer.lib.databinding.ActivityTextDrawableBinding
-import com.fizzer.widget.view.IrregularBackgroundHelper
-import com.fizzer.widget.view.IrregularParagraphDrawable
 import com.fizzer.widget.view.TextDrawable
 
 class TextDrawablePage : BaseVBActivity<ActivityTextDrawableBinding>() {
