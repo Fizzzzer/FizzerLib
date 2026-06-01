@@ -73,7 +73,7 @@ class TransformShapeImageView @JvmOverloads constructor(
 
 
     @SuppressLint("DrawAllocation")
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         val sc = canvas?.saveLayer(0f, 0f, width.toFloat(), height.toFloat(), null) ?: -1
         mOutRect.apply {
             right = this@TransformShapeImageView.width

@@ -36,5 +36,25 @@
             style="@style/item_font"
             android:text="ItemValue" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/strokedTestView"
+            style="@style/item_font"
+            android:text="strokedTestView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/rotateMarkView"
+            style="@style/item_font"
+            android:text="RotateMarkView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/imageClip"
+            style="@style/item_font"
+            android:text="ImageClip" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textDrawable"
+            style="@style/item_font"
+            android:text="TextDrawable" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

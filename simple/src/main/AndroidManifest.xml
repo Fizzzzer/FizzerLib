@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fizzer.lib">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".MyApplication"
@@ -43,6 +42,20 @@
         <activity
             android:name=".widget.ItemValuePage"
             android:label="ItemValuePage" />
+        <activity
+            android:name=".widget.StrokedTestViewPage"
+            android:label="StrokedTestViewPage" />
+        <activity
+            android:name=".widget.RotateMarkPage"
+            android:label="RotateMarkPage" />
+
+        <activity
+            android:name=".widget.ImageClipPage"
+            android:label="ImageClipPage" />
+        <activity
+            android:name=".widget.TextDrawablePage"
+            android:label="TextDrawablePage" />
+
     </application>
 
 </manifest>

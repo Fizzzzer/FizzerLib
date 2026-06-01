@@ -43,7 +43,7 @@ class RadiusCardView @JvmOverloads constructor(
     }
 
     @SuppressLint("DrawAllocation")
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         val path = Path()
         val rectf = getRectF()
         val radius = floatArrayOf(

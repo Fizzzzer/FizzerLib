@@ -47,4 +47,9 @@
         <!-- 边框颜色 -->
         <attr name="tsiv_stroke_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="StrokedTextView">
+        <attr name="stv_strokeThickness" format="dimension"/>
+        <attr name="stv_strokeColor" format="color"/>
+    </declare-styleable>
 </resources>

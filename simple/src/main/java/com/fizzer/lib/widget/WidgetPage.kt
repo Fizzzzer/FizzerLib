@@ -35,5 +35,22 @@ class WidgetPage : AppCompatActivity() {
         binding.itemValue.clickWithTrigger {
             startActivity(Intent(this, ItemValuePage::class.java))
         }
+
+        binding.strokedTestView.clickWithTrigger {
+            startActivity(Intent(this, StrokedTestViewPage::class.java))
+        }
+
+        binding.rotateMarkView.clickWithTrigger {
+            startActivity(Intent(this, RotateMarkPage::class.java))
+        }
+
+        binding.imageClip.clickWithTrigger {
+            startActivity(Intent(this, ImageClipPage::class.java))
+        }
+
+        binding.textDrawable.clickWithTrigger {
+            startActivity(Intent(this, TextDrawablePage::class.java))
+        }
+
     }
 }

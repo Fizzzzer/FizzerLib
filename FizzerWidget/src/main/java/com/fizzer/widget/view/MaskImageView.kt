@@ -58,7 +58,7 @@ class MaskImageView @JvmOverloads constructor(
         return true
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         canvas?.drawBitmap(
             mBgBitmap, srcRect,
             outRect.apply {

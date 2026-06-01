@@ -104,7 +104,7 @@ class CircleProgressBar @JvmOverloads constructor(
         setMeasuredDimension(width, width)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         var centerX = width / 2
         var rectF = RectF()
         rectF.left = mStrokeWidth.toFloat()
