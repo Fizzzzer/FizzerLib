@@ -78,7 +78,7 @@ class ImageEditorView @JvmOverloads constructor(
     }
 
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         ClipFrameView.instance.onDraw(canvas)
     }

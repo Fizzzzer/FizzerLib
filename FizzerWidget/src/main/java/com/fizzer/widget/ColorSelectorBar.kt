@@ -111,7 +111,7 @@ class ColorSelectorBar @JvmOverloads constructor(
         setMeasuredDimension(viewW, viewH)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         if (mOrientation == HORIZONTAL) {

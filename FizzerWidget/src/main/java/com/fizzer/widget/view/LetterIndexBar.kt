@@ -44,7 +44,7 @@ class LetterIndexBar @JvmOverloads constructor(
         mCirclePaint.style = Paint.Style.FILL
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawLetter(canvas)
     }

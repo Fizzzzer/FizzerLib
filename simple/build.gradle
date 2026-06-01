@@ -1,15 +1,15 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
 }
 
 android {
-    compileSdk 33
+    namespace 'com.fizzer.lib'
+    compileSdk 37
 
     defaultConfig {
         applicationId "com.fizzer.lib"
-        minSdk 21
-        targetSdk 33
+        minSdk 23
+        targetSdk 37
         versionCode 1
         versionName "1.0"
 
@@ -23,24 +23,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    viewBinding{
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+    implementation libs.androidx.constraintlayout
     implementation project(path: ':FizzerBaseLib')
     implementation project(path: ':FizzerWidget')
 }

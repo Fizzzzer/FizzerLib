@@ -1,0 +1,44 @@
+[versions]
+agp = "9.1.1"
+
+# AndroidX
+coreKtx = "1.18.0"
+appcompat = "1.7.1"
+material = "1.14.0"
+lifecycle = "2.10.0"
+activity = "1.13.0"
+constraintlayout = "2.2.1"
+
+# Third-party
+gson = "2.14.0"
+mmkv = "2.4.0"
+coroutines = "1.11.0"
+
+# Testing
+junit = "4.13.2"
+junitExt = "1.3.0"
+espresso = "3.7.0"
+
+[libraries]
+# AndroidX
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Third-party
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+tencent-mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
